@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+{% block content %}
+
+<!-- tab3  -->
+                <div class=" container">
+                  <div class="row">
+                    {% if form.errors %}
+                      <h1>ERRORRRRRR same email again???</h1>
+                      {% endif %}
+
+                    <!-- Review Form -->
+                    <div class="contactus">
+                      <div id="review-form">
+                        <form class="review-form" method="POST" enctype="multipart/form-data">
+                           {% csrf_token %}
+                           {{ form.non_field_errors}}.
+                            {{ contact_form.as_p }}
+                          <button class="primary-btn" type="submit">Submit</button>
+                        </form>
+                      </div>
+                    </div>
+                    <!-- /Review Form -->
+                  </div>
+                </div>
+                <!-- /tab3  -->
+
+ {% endblock content %}

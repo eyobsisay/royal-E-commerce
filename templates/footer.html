@@ -1,0 +1,112 @@
+<!-- NEWSLETTER -->
+
+		<div id="newsletter" class=" section ">
+
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12 col-sm-9 ">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form method ='GET' action="{% url 'subscriber' %}" >
+								{% csrf_token %}
+								<input class="input" type="email" name='subscriber_email' placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								{% load mytags %}
+										{% companyinfo as socialmedia %}
+								<li>
+									<a href="{{ socialmedia.facebook }}" target="_blank"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter" target="_blank"></i></a>
+								</li>
+								<li>
+									<a href="{{socialmedia.instagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+<!-- FOOTER -->
+		<footer id="footer">
+			<!-- top footer -->
+			<div class="section">
+				<!-- container -->
+				<div class="container">
+					<!-- row -->
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							{% load mytags %}
+										{% companyinfo as companyinfo %}
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>{{companyinfo.aboutus|safe}}  </p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>{{companyinfo.address}}</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>{{companyinfo.phone}}</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>{{companyinfo.email}}</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">ShowRoom</h3>
+								<ul class="footer-links">
+								{% load mytags %}
+											 {% showroomlist as showroomlist_list %}
+											{%for rs in showroomlist_list  %}
+									
+									<li><a href="#">{{rs.title}}</a></li>
+									{%endfor%}
+								</ul>
+								
+							</div>
+						</div>
+
+						<div class="clearfix visible-xs"></div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="{%url 'aboutus'%}">About Us</a></li>
+									<li><a href="{%url 'contactus' %}">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href=""> My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- /row -->
+				</div>
+				<!-- /container -->
+			</div>
+			<!-- /top footer -->
+		</footer>
+		<!-- /FOOTER -->

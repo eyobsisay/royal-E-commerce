@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+{% block content %}
+<section>
+         <div class="container">
+            <div class="row">
+                <!-- SIDEBAR -->
+                {% include "side-bar.html" %}
+                <!-- SIDEBAR -->
+                <div class="col-sm-9">
+                  <div class="products-tabs">
+                                <!-- tab -->
+                                        <!-- product -->
+                                {% for rs in products %}
+                                    <div class="col-sm-4">
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="{{ rs.images.url }}" alt="">
+                                                <div class="product-label">
+                                                    <span class="sale">{{rs.prcentcent}}%</span>
+                                                    <span class="new">NEW {{rs.newproducts}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-body">
+                                                <p class="product-category">{{ rs.category }}</p>
+                                                <h3 class="product-name"><a href="#">{{ rs.title }}</a></h3>
+                                                <h4 class="product-price">{{ rs.minamount }} <del class="product-old-price">{{ rs.price }}</del></h4>
+                                                <div class="product-rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                               <div class="product-btns">
+                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                    <button class="add-to-compare"  onclick="window.location.href='{% url 'product_detail' rs.id rs.slug %}'"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                </div>
+                                            </div>
+                                             <div class="add-to-cart">
+                                                {% if  rs.variant != 'None'   %}
+                                                   <a href="{% url 'product_detail' rs.id rs.slug %}" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i> quick view</a>
+                                                    {% else  %}
+                                                  <a href=" {% url 'addtoshopcart'  rs.id %}" class="add-to-cart-btn" ><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                                    {%endif%}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <!-- /product -->
+                                {%endfor%}
+
+                                    
+                                    
+                                  
+                     </div>
+                                <!-- /tab -->
+                 </div>
+                            
+              </div>         
+                               
+                                
+            </div>
+           
+
+         
+                          
+ </section>
+    {% endblock content %}
